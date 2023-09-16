@@ -1,4 +1,4 @@
-const callable = async (fn) => {
+const withErrorsAsValues = async (fn) => {
   let error = null;
   let output;
 
@@ -30,4 +30,4 @@ const callable = async (fn) => {
   return [error, output];
 };
 
-export default callable;
+export default withErrorsAsValues;
