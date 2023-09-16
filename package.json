@@ -1,6 +1,7 @@
 {
-  "name": "errors-as-values-bun",
-  "module": "index.js",
+  "name": "errors-as-values",
+  "version": "0.1.0",
+  "module": "build/index.js",
   "type": "module",
   "scripts": {
     "entrypoint:async:success": "bun ./src/architecture/async/success.process.js",
@@ -23,6 +24,5 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "version": "0.1.0"
+  }
 }
