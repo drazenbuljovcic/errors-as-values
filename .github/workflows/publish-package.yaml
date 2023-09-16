@@ -19,7 +19,6 @@ jobs:
       - run: bun run build
 
       - name: Publish package
-        uses: tangro/actions-bun@v1
         with:
           command: npm publish
         env:
