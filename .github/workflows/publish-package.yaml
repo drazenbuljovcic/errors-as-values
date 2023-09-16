@@ -18,9 +18,15 @@ jobs:
       - run: bun install
       - run: bun run build
 
-      - name: Publish package
-        uses: oven-sh/setup-bun@v1
-        with:
-          command: npm publish
+      - name: Read package.json
+        id: package_version
+        # package-version
+      - run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
+
+      - name: Publish package and tag release
+      - run: |
+          npm publish
+          git tag v${{ steps.package_version.outputs.package-version }}
+          git push origin v${{ steps.package_version.outputs.package-version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
