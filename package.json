@@ -1,7 +1,7 @@
 {
   "name": "errors-as-values",
   "version": "0.1.2",
-  "module": "build/index.js",
+  "module": "build/mjs/index.js",
   "files": [
     "build",
     "README.md",
@@ -15,22 +15,15 @@
     "entrypoint:sync:error": "bun ./src/architecture/sync/error.process.js",
     "entrypoint:callable:error": "bun ./src/architecture/callable/error.js",
     "entrypoint:callable:success": "bun ./src/architecture/callable/success.js",
-    "prebuild": "rm -rf build",
-    "build:node": "bun build ./src/index.js --outdir ./build/node --target node",
-    "build:browser": "bun build ./src/index.js --outdir ./build/brower --target browser",
-    "build:bun": "bun build ./src/index.js --outdir ./build/bun --target bun",
-    "build": "bun build:node && bun build:browser && bun build:bun"
+    "prebuild": "rm -rf ./build",
+    "build:mjs": "bun build ./src/index.js --outdir ./build/mjs",
+    "build": "bun build:mjs"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "bun-types": "latest",
-    "eslint": "^8.49.0"
-  },
-  "peerDependencies": {
+    "eslint": "^8.49.0",
     "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "errors-as-values": "^0.1.1"
   }
 }
