@@ -21,10 +21,10 @@ jobs:
       - name: Read package.json
         id: package_version
         # package-version
-      - run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
+        run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
 
       - name: Publish package and tag release
-      - run: |
+        run: |
           npm publish
           git tag v${{ steps.package_version.outputs.package-version }}
           git push origin v${{ steps.package_version.outputs.package-version }}
