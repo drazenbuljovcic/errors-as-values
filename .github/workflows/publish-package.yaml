@@ -23,6 +23,11 @@ jobs:
         # package-version
         run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
 
+      - name: Use the GitHub Token
+        run: echo "My GitHub token is ${{ secrets.GH_PAT }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
       - name: Git
         run: |
           git config user.name github-actions[bot]
