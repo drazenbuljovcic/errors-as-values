@@ -2,9 +2,14 @@
   "name": "errors-as-values",
   "version": "0.1.1",
   "module": "build/index.js",
+  "files": [
+    "build",
+    "README.md",
+    "package.json"
+  ],
   "type": "module",
   "scripts": {
-    "entrypoint:async:success": "bun ./src/architecture/async/success.process.js",
+    "entrsypoint:async:success": "bun ./src/architecture/async/success.process.js",
     "entrypoint:async:error": "bun ./src/architecture/async/error.process.js",
     "entrypoint:sync:success": "bun ./src/architecture/sync/success.process.js",
     "entrypoint:sync:error": "bun ./src/architecture/sync/error.process.js",
@@ -24,5 +29,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "errors-as-values": "^0.1.1"
   }
 }
