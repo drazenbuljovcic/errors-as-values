@@ -38,8 +38,9 @@ jobs:
           echo ${{ secrets.NPM_AUTH_TOKEN }}
           git tag v${{ steps.package_version.outputs.package-version }}
           git push origin v${{ steps.package_version.outputs.package-version }}
-        # with:
-        #   token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Publish
         run: |
