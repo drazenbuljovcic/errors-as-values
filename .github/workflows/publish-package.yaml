@@ -15,10 +15,8 @@ jobs:
 
       - name: Bun
         uses: oven-sh/setup-bun@v1
-        with:
-          # run any `bun` or `bunx` command
-          - run: bun install
-          - run: bun run build
+      - run: bun install
+      - run: bun run build
 
       - name: Publish package
         uses: tangro/actions-bun@v1
