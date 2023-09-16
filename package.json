@@ -1,0 +1,28 @@
+{
+  "name": "errors-as-values-bun",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "entrypoint:async:success": "bun ./src/architecture/async/success.process.js",
+    "entrypoint:async:error": "bun ./src/architecture/async/error.process.js",
+    "entrypoint:sync:success": "bun ./src/architecture/sync/success.process.js",
+    "entrypoint:sync:error": "bun ./src/architecture/sync/error.process.js",
+    "entrypoint:callable:error": "bun ./src/architecture/callable/error.js",
+    "entrypoint:callable:success": "bun ./src/architecture/callable/success.js",
+    "prebuild": "rm -rf build",
+    "build:node": "bun build ./src/index.js --outdir ./build/node --target node",
+    "build:browser": "bun build ./src/index.js --outdir ./build/brower --target browser",
+    "build:bun": "bun build ./src/index.js --outdir ./build/bun --target bun",
+    "build": "bun build:node && bun build:browser && bun build:bun"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "bun-types": "latest",
+    "eslint": "^8.49.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "version": "0.1.0"
+}
