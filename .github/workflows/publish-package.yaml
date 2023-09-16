@@ -34,7 +34,7 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Tag release
-        run: |
+      - run: |
           echo ${{ secrets.NPM_AUTH_TOKEN }}
           git tag v${{ steps.package_version.outputs.package-version }}
           git push origin v${{ steps.package_version.outputs.package-version }}
