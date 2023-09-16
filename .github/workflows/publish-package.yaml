@@ -15,10 +15,9 @@ jobs:
 
       - name: Bun
       - uses: oven-sh/setup-bun@v1
-
-      # run any `bun` or `bunx` command
-      - run: bun install
-      - run: bun run build
+        # run any `bun` or `bunx` command
+        - run: bun install
+        - run: bun run build
 
       - name: Publish package
         run: npm publish
