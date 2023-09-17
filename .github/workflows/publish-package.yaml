@@ -23,6 +23,11 @@ jobs:
         # package-version
         run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
 
+      - name: Read rc version
+        id: Read commit
+        # package-version
+        run: echo "::set-output name=rc-version::$(git log -1 --pretty=%H)"
+
       - name: Use the GitHub Token
         run: echo "My GitHub token is ${{ secrets.GH_PAT }}"
         env:
@@ -38,7 +43,8 @@ jobs:
 
       - name: Tag release
         run: |
-          echo ${{ secrets.NPM_AUTH_TOKEN }}
+          echo "the package version would be"
+          echo ${{ steps.package_version.outputs.package-version }}
           # git tag v${{ steps.package_version.outputs.package-version }}
           # git push origin v${{ steps.package_version.outputs.package-version }}
         env:
