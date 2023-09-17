@@ -34,4 +34,13 @@ const withErrorsAsValues = async (fn) => {
   return [error, output];
 };
 
+const withAsyncAgnostic = (fn) => {
+  const isAsyncFn = fn.constructor.name === "AsyncFunction";
+  console.log({ isAsyncFn });
+
+  const cb = isAsyncFn ? async () => await fn() : () => fn();
+  return cb;
+};
+
+export { withAsyncAgnostic };
 export default withErrorsAsValues;

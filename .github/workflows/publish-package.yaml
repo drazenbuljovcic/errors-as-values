@@ -1,9 +1,4 @@
-name: Publish Package
-
-# on:
-#   push:
-#     tags:
-#       - "*"
+name: Publish RC
 
 on:
   pull_request:
