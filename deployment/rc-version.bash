@@ -5,6 +5,5 @@ version=$(node -p "require('./package.json').version")
 
 commit=$(git log -1 --pretty=%H) 
 
-# Use the captured version as an argument for npm version
-npm version "$version-rc.$$commit"
-
+git tag "$version-rc.$commit"
+git pusho "$version-rc.$commit" -f
