@@ -24,7 +24,9 @@ jobs:
       - name: Read package.json
         id: package_version
         # package-version
-        run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
+        run: |
+          echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
+          echo "package version: ${{ steps.package_version.outputs.package-version }}"
 
       - name: Read rc version
         id: read_commit
@@ -32,7 +34,7 @@ jobs:
         run: |
           echo "Reading RC"
           echo "::set-output name=rc-version::$(git log -1 --pretty=%H)"
-          echo ${{ steps.read_commit.outputs.rc-version }}
+          echo "rc version: ${{ steps.package_version.outputs.rc-version }}"
 
       - name: Use the GitHub Token
         run: echo "My GitHub token is ${{ secrets.GH_PAT }}"
@@ -50,7 +52,7 @@ jobs:
       - name: Tag release
         run: |
           echo "the package version would be"
-          echo ${{ steps.package_version.outputs.rc-version }}
+          echo "${{ steps.package_version.outputs.rc-version }}"
           # TODO tag release action
           # git tag v${{ steps.package_version.outputs.rc-version }}
           # git push origin v${{ steps.package_version.outputs.rc-version }}
