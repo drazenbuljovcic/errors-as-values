@@ -1,6 +1,6 @@
 {
   "name": "errors-as-values",
-  "version": "0.1.5-rc.ce6472985c8fb4c3f0472fe8fb41c5412431a8d5",
+  "version": "0.1.5-rc.37b9cd7623e39bb45f4d67d44f166e553e11c5ed",
   "module": "build/mjs/index.js",
   "files": [
     "build",
