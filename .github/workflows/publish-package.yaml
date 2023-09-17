@@ -1,6 +1,9 @@
 name: Publish RC
 
 on:
+  push:
+    tags:
+      - "*"
   pull_request:
     branches:
       - "*"
