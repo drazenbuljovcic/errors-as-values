@@ -34,4 +34,19 @@ const withErrorsAsValues = async (fn) => {
   return [error, output];
 };
 
+// unknown | Promise<unknown>
+const determineAgnostic = (fn) => {
+  const isAsyncFn = fn.constructor.name === "AsyncFunction";
+  console.log({ isAsyncFn });
+
+  const cb = isAsyncFn ? async () => await fn() : () => fn();
+  return cb;
+};
+
+// necessary layer of wrapping
+// returning a function
+// unknown | Promise<unknown>
+const withAsyncAgnostic = (fn) => determineAgnostic(fn)();
+
+export { withAsyncAgnostic };
 export default withErrorsAsValues;
