@@ -1,6 +1,6 @@
 {
   "name": "errors-as-values",
-  "version": "0.1.5-rc.664fd8682ec04725ae2da1339d533772e1bcd58c",
+  "version": "0.1.5-rc.c213ca7187202a3bbb7a0af5ebd4d9996f0cd250",
   "module": "build/mjs/index.js",
   "files": [
     "build",
@@ -18,7 +18,8 @@
     "prebuild": "rm -rf ./build",
     "build:mjs": "bun build ./src/index.js --outdir ./build/mjs",
     "build:cjs": "vite build",
-    "build": "bun build:mjs"
+    "build": "bun build:mjs",
+    "version": "./deployment/rc-version.bash"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.0",
