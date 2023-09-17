@@ -7,6 +7,10 @@ const withErrorsAsValues = async (fn) => {
     return [error, output];
   }
 
+  // asyncFunction instanceof AsyncFunction
+  const isAsyncFn = fn.constructor.name === "AsyncFunction";
+  console.log({ isAsyncFn });
+
   try {
     const result = fn();
     const isPromise = result instanceof Promise;
