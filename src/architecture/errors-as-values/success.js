@@ -1,7 +1,7 @@
 import handleAsync from "./async";
 
 const [error, result] = await handleAsync({
-  callable: true,
+  errorsAsValues: true,
   success: true,
 });
 

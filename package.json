@@ -1,6 +1,6 @@
 {
   "name": "errors-as-values",
-  "version": "0.1.4",
+  "version": "0.1.5-rc.ce6472985c8fb4c3f0472fe8fb41c5412431a8d5",
   "module": "build/mjs/index.js",
   "files": [
     "build",
@@ -13,8 +13,8 @@
     "entrypoint:async:error": "bun ./src/architecture/async/error.process.js",
     "entrypoint:sync:success": "bun ./src/architecture/sync/success.process.js",
     "entrypoint:sync:error": "bun ./src/architecture/sync/error.process.js",
-    "entrypoint:callable:error": "bun ./src/architecture/callable/error.js",
-    "entrypoint:callable:success": "bun ./src/architecture/callable/success.js",
+    "entrypoint:errors-as-values:error": "bun ./src/architecture/errors-as-values/error.js",
+    "entrypoint:errors-as-values:success": "bun ./src/architecture/errors-as-values/success.js",
     "prebuild": "rm -rf ./build",
     "build:mjs": "bun build ./src/index.js --outdir ./build/mjs",
     "build:cjs": "vite build",

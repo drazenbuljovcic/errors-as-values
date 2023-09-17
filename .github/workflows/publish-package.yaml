@@ -15,12 +15,39 @@ jobs:
 
       - name: Bun
         uses: oven-sh/setup-bun@v1
-        with:
-          # run any `bun` or `bunx` command
-          - run: bun install
-          - run: bun run build
+      - run: bun install
+      - run: bun run build
 
-      - name: Publish package
-        run: npm publish
+      - name: Read package.json
+        id: package_version
+        # package-version
+        run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
+
+      - name: Use the GitHub Token
+        run: echo "My GitHub token is ${{ secrets.GH_PAT }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Authenticate npm
+        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Tag release
+        run: |
+          echo ${{ secrets.NPM_AUTH_TOKEN }}
+          # git tag v${{ steps.package_version.outputs.package-version }}
+          # git push origin v${{ steps.package_version.outputs.package-version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Publish
+        run: |
+          npm publish --access public
+          echo ${{ secrets.NPM_AUTH_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

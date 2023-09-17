@@ -1,4 +1,4 @@
-import withCallable from "../..";
+import withErrorsAsValues from "../..";
 
 const asyncErrorFunction = async (arg1) => {
   console.log(arg1);
@@ -8,7 +8,7 @@ const asyncErrorFunction = async (arg1) => {
 };
 
 const callAsyncOutputWithCatchAndBindArgs = (...args) => {
-  return withCallable(asyncErrorFunction.bind(null, ...args));
+  return withErrorsAsValues(asyncErrorFunction.bind(null, ...args));
 };
 
 export default callAsyncOutputWithCatchAndBindArgs;
