@@ -24,9 +24,12 @@ jobs:
         run: echo "::set-output name=package-version::$(node -p "require('./package.json').version")"
 
       - name: Read rc version
-        id: Read commit
-        # package-version
-        run: echo "::set-output name=rc-version::$(git log -1 --pretty=%H)"
+        id: read_commit
+        # rc-version
+        run: |
+          echo "Reading RC"
+          echo "::set-output name=rc-version::$(git log -1 --pretty=%H)"
+          echo ${{ steps.read_commit.outputs.rc-version }}
 
       - name: Use the GitHub Token
         run: echo "My GitHub token is ${{ secrets.GH_PAT }}"
