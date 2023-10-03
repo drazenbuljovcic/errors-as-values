@@ -1,9 +1,10 @@
 {
   "name": "errors-as-values",
-  "version": "0.1.8",
-  "module": "build/mjs/index.js",
+  "version": "0.0.1",
+  "module": "./dist/mjs/index.js",
+  "main": "./dist/mjs/index.js",
   "files": [
-    "build",
+    "dist",
     "README.md",
     "package.json"
   ],
@@ -16,9 +17,10 @@
     "entrypoint:errors-as-values:error": "bun ./src/architecture/errors-as-values/error.js",
     "entrypoint:errors-as-values:success": "bun ./src/architecture/errors-as-values/success.js",
     "prebuild": "rm -rf ./build",
-    "build:mjs": "bun build ./src/index.ts --outdir ./build/mjs",
+    "build:mjs": "bun build ./src/index.js --outdir ./build/dist/mjs",
     "build:cjs": "vite build",
-    "build": "bun build:mjs"
+    "build": "bun build:mjs",
+    "postbuild": "cp package.json build/package.json"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.0",
@@ -27,5 +29,9 @@
     "eslint": "^8.49.0",
     "typescript": "^5.0.0",
     "vite": "^4.4.9"
+  },
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/drazenbuljovcic/errors-as-values"
   }
 }

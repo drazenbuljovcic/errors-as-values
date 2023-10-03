@@ -1,7 +1,7 @@
 import withCatch from "../withCatch.sync";
 
-const outputFunction = (outputFunctionArgument1, outputFunctionArgument2) => {
-  console.log(outputFunctionArgument1, outputFunctionArgument2);
+const outputFunction = (outputFunctionArgument1) => {
+  console.log(outputFunctionArgument1);
   return {
     success: true,
   };
