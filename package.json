@@ -16,7 +16,7 @@
     "entrypoint:errors-as-values:error": "bun ./src/architecture/errors-as-values/error.js",
     "entrypoint:errors-as-values:success": "bun ./src/architecture/errors-as-values/success.js",
     "prebuild": "rm -rf ./build",
-    "build:mjs": "bun build ./src/index.js --outdir ./build/mjs",
+    "build:mjs": "bun build ./src/index.ts --outdir ./build/mjs",
     "build:cjs": "vite build",
     "build": "bun build:mjs"
   },

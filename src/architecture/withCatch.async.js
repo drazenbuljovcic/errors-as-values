@@ -2,7 +2,9 @@ const withCatchAsync = async (fn) => {
   let error = null;
   let output;
   try {
-    const result = await fn();
+    const result = await fn().catch((thrown) => {
+      error = thrown;
+    });
 
     // necessary?
     if (output instanceof Error) {
