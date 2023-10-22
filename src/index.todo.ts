@@ -9,42 +9,42 @@ type ErrorsAsValues = <E, O>(fn: () => O) => [E | null, O | null];
 // type ErrorsAsValuesAsync<E, O> = (fn: () => O) => Promise<[E | null, O | null]>;
 
 // change back to async
-const withErrorsAsValues: ErrorsAsValues = <E, O>(fn: () => unknown) => {
-  let error = null;
-  let output: unknown;
+// const withErrorsAsValues: ErrorsAsValues = <E, O>(fn: () => unknown) => {
+//   let error = null;
+//   let output: unknown;
 
-  if (!(fn instanceof Function)) {
-    error = new Error("fn is not a function");
-    return [error as E, output as O];
-  }
+//   if (!(fn instanceof Function)) {
+//     error = new Error("fn is not a function");
+//     return [error as E, output as O];
+//   }
 
-  // asyncFunction instanceof AsyncFunction
-  const isAsyncFn = fn.constructor.name === "AsyncFunction";
-  console.log({ isAsyncFn });
+//   // asyncFunction instanceof AsyncFunction
+//   const isAsyncFn = fn.constructor.name === "AsyncFunction";
+//   console.log({ isAsyncFn });
 
-  try {
-    const result = fn();
-    const isPromise = result instanceof Promise;
+//   try {
+//     const result = fn();
+//     const isPromise = result instanceof Promise;
 
-    let awaitedResult;
-    if (result instanceof Promise) {
-      // return await
-      awaitedResult = result;
+//     let awaitedResult;
+//     if (result instanceof Promise) {
+//       // return await
+//       awaitedResult = result;
 
-      output = awaitedResult;
-    }
+//       output = awaitedResult;
+//     }
 
-    if (result instanceof Error) {
-      error = result;
-    } else {
-      output = !isPromise ? result : awaitedResult;
-    }
-  } catch (thrown) {
-    error = thrown;
-  }
+//     if (result instanceof Error) {
+//       error = result;
+//     } else {
+//       output = !isPromise ? result : awaitedResult;
+//     }
+//   } catch (thrown) {
+//     error = thrown;
+//   }
 
-  return [error as E, output as O];
-};
+//   return [error as E, output as O];
+// };
 
 // type IsAsync<IsAsync extends boolean> = IsAsync extends true
 //   ? Promise<unknown>
@@ -59,7 +59,7 @@ const determineAgnostic = <F extends CallableFunction>(
   const isAsyncFn = fn.constructor.name === "AsyncFunction";
 
   // ts always resolves to a sync function
-  // const cb = isAsyncFn ? async () => await fn() : () => fn();
+  const cb = isAsyncFn ? async () => await fn() : () => fn();
   // { isAsync: true , fn }
   // { isAsync: false , fn }
   return { callable: fn, isAsync: isAsyncFn };

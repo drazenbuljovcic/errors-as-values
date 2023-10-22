@@ -1,9 +1,10 @@
+// import withErrorsAsValues from "../..";
 import withCatch from "../withCatch.sync";
 
-const outputFunction = (outputFunctionArgument1) => {
-  console.log(outputFunctionArgument1);
+const outputFunction = (arg1) => {
   return {
     success: true,
+    arg1,
   };
 };
 

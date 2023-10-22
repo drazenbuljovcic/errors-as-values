@@ -1,7 +1,7 @@
 import withCatch from "../withCatch.sync";
 
-const syncErrorFunction = (errorArguments) => {
-  console.log({ errorArguments });
+const syncErrorFunction = (callableChecker) => {
+  callableChecker();
   throw new Error("This is an error");
 };
 

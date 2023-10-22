@@ -1,12 +1,9 @@
-const withCatchAsync = async (fn) => {
+const withCatch = (fn) => {
   let error = null;
   let output;
   try {
-    const result = await fn().catch((thrown) => {
-      error = thrown;
-    });
+    const result = fn();
 
-    // necessary?
     if (output instanceof Error) {
       error = result;
     } else {
@@ -18,4 +15,4 @@ const withCatchAsync = async (fn) => {
   return [error, output];
 };
 
-export default withCatchAsync;
+export default withCatch;

@@ -1,5 +1,5 @@
 import withCatch from "./architecture/withCatch.sync";
-import withCatchAsync from "./architecture/withCatch.async";
+import withCatchAsync from "./withCatch.async";
 
 const withErrorsAsValues = async (fn) => {
   let error = null;
@@ -40,8 +40,6 @@ const withErrorsAsValues = async (fn) => {
 // unknown | Promise<unknown>
 const determineAgnostic = (fn) => {
   const isAsyncFn = fn.constructor.name === "AsyncFunction";
-  console.log({ isAsyncFn });
-
   const cb = isAsyncFn ? async () => await fn() : () => fn();
   return cb;
 };
