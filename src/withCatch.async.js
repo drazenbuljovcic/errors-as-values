@@ -6,7 +6,7 @@ const withCatchAsync = async (fn) => {
       error = thrown;
     });
 
-    if (output instanceof Error) {
+    if (result instanceof Error) {
       error = result;
     } else {
       output = result;

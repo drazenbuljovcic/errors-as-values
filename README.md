@@ -1,6 +1,6 @@
-# errors-as-values-bun
+# errors-as-values
 
-# Dev
+### dev
 
 To install dependencies:
 
@@ -8,7 +8,7 @@ To install dependencies:
 bun install
 ```
 
-To run:
+### test
 
 ```bash
 bun run build
@@ -18,6 +18,7 @@ This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) i
 
 # Deployment
 
-- Commit your changes
+- Build with `bun run build`
+- Go into `dist`
 - Run `npm version <patch|minor|major>`
 - Run `npm publish`

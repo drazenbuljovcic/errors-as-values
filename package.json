@@ -10,12 +10,6 @@
   ],
   "type": "module",
   "scripts": {
-    "entrsypoint:async:success": "bun ./src/architecture/async/success.process.js",
-    "entrypoint:async:error": "bun ./src/architecture/async/error.process.js",
-    "entrypoint:sync:success": "bun ./src/architecture/sync/success.process.js",
-    "entrypoint:sync:error": "bun ./src/architecture/sync/error.process.js",
-    "entrypoint:errors-as-values:error": "bun ./src/architecture/errors-as-values/error.js",
-    "entrypoint:errors-as-values:success": "bun ./src/architecture/errors-as-values/success.js",
     "prebuild": "rm -rf ./build",
     "build:mjs": "bun build ./src/index.js --outdir ./build/dist/mjs",
     "build:cjs": "vite build",

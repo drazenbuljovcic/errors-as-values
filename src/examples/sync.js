@@ -1,4 +1,3 @@
-// import withErrorsAsValues from "../..";
 import withCatch from "../withCatch.sync";
 
 const outputFunction = (arg1) => {
