@@ -1,6 +1,22 @@
 # errors-as-values
 
-### dev
+## Purpose
+
+This library exposes helpers to streamline the control flow in your applications.
+As errors are thrown in `Javascript` natively, this library is built with the intention of getting as close to `Go` style syntax of always treating the error as a first class citizen and returning it together with the output of the given function.
+
+
+```js
+// eav -> errors as values
+const [error, value] = eav(myFunctionThatDoesSomething);
+
+if (null != error) {
+  // handle error here
+}
+// use value being safe
+```
+
+## Contribution
 
 To install dependencies:
 
@@ -8,7 +24,7 @@ To install dependencies:
 bun install
 ```
 
-### test
+To build the library run:
 
 ```bash
 bun run build
